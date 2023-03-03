@@ -1,6 +1,6 @@
 
 import './App.scss';
-
+const [toggleView, setToggleView] = useState({});
 function App() {
   return (
     <div className="App">
