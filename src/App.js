@@ -5,9 +5,11 @@ function App() {
   return (
     <div className="App">
         
-        <h1>Chatbot ppga</h1>
-        <h2>Chatbot ppga</h2>
+        <h1>SNEAK ME</h1>
+        <h2>Bienvenue chez Sneak Me, numéro 1 sur le marché des sneakers.</h2>
         <p>test</p>
+        <p>test leo</p>
+        <div className='rond '></div>
     </div>
   );
 }
