@@ -20,10 +20,8 @@ function Chat(props) {
   };
 
   return (
-    <div className="chat-container">
-      <div className="messages-container">
       <div class="rectangleChatbot">
-        <div class="topBlue">
+        <div class="topBlue">   
             <button onClick={handleChatClose} class="closeButton"><i class="fa-solid fa-xmark"></i></button>
             <h1 class="topBlueTitle">ppbot</h1>
         </div>
@@ -41,8 +39,6 @@ function Chat(props) {
             </p>
         </div>
       </div>
-      </div>
-    </div>
   );
 }
 
