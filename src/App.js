@@ -1,14 +1,26 @@
-
+import React, { useState } from 'react';
+import Chat from './components/Chat';
 import './App.scss';
-import { useState } from "react";
+
 function App() {
+  const [showChat, setShowChat] = useState(false);
+
+  const handleClick = () => {
+    setShowChat(true);
+  };
+
+  const handleClose = () => {
+    setShowChat(false);
+  };
+
   return (
     <div className="App">
-        <h1>SNEAK ME</h1>
-        <h2>Bienvenue chez Sneak Me, numéro 1 sur le marché des sneakers.</h2>
-        <p>test</p>
-        <p>test leo</p>
-        <div className='rond'></div>
+      {!showChat && (
+        <div className="Circle" onClick={handleClick}>
+          <i class="fa-solid fa-comment"></i>
+        </div>
+      )}
+      {showChat && <Chat onClose={handleClose} />}
     </div>
   );
 }
