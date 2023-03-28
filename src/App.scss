@@ -2,124 +2,148 @@
 * {
     font-family: "Montserrat";
 }
+//GLOBAL VARIABLES
+$backgroundColor: #4460ba;
+$fontWeightColor: 600;
+$labelFontWeight: 500;
+$closeBtn: #ffff;
+//GLOBAL CLASSES
+.link {
+    color: initial;
+    text-decoration: none;
+    font-weight: $fontWeightColor;
+    cursor: pointer;
+}
 
 .Circle {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 70px;
-    background-color: #4460ba;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: $backgroundColor;
     border-radius: 50%;
     position: absolute;
     bottom: 0;
     right: 0;
     margin: 20px;
     transition: .4s;
-}
-
-.Circle:hover {
-    background-color: #1b3897;
-}
-
-.Circle i {
-    font-size: 2.4rem;
-    color: #fff;
+    &:hover {
+        background-color: darken($backgroundColor, 15%);
+    }
+    i {
+        font-size: 2.4rem;
+        color: #fff;
+    }
 }
 
 .rectangleChatbot {
-    width: 400px;
-    height: 550px;
+    //keep the ratio of the width and height but with rem
+    width: 25rem;
+    height: 34rem;
     border: 1px solid #39558E;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
     margin: 30px;
     position: absolute;
     right: 0;
     bottom: 0;
-}
-
-.closeButton {
-    background-color: initial;
-    border: none;
-    i {
-        color: #fff;
-        font-size: 1.7rem;
-        transition: .3s;
+    
+    
+    .topBlue {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+        background: linear-gradient(270deg, #4865C8 0%, #1D8CCA 100%);
+        // text-align: right;
+        .topBlueTitle {
+            flex: 1;
+            margin: 0 0 0 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: white;
+            font-family: 'Montserrat';
+            font-weight: 900;
+            // padding-bottom: 20px;
+            // margin-top: -5px;
+        }
+        .closeButton {
+            align-self: baseline;
+            width: fit-content;
+            background-color: initial;
+            border: none;
+            i {
+                color: $closeBtn;
+                font-size: 1.7rem;
+                transition: 200ms;
+            }
+            i:hover {
+                cursor: pointer;
+                color:darken($closeBtn,20%);
+                color: #cbcbcb;
+            }
+        }
     }
-    i:hover {
-        color: #cbcbcb;
+    .loginView {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 15rem;
+        margin: 3rem auto;
+        p {
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+        }
+        .Logo {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        
+        label {
+            font-weight: $labelFontWeight;
+            margin-bottom: 1.3rem;
+        }
+        input {
+            width: 100%;
+            margin: 7px auto 0;
+            border: none;
+            background-color: #e9e9e9;
+            height: 27px;
+            border-radius: 5px;
+            //TODO: confirm shadow to the inputs
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.428);
+        }
+        .labelButton {
+            background: linear-gradient(90deg, #1D8CCA 0%, #4865C8 11%,darken(#4865C8,10%) 20%,lighten(#1D8CCA,0%) 50%,darken(#4865C8,10%) 80%,#4865C8 100%);
+            background-size: 400% 400%;
+            border-radius: 10px;
+            color: #fff;
+            border: 1px solid #4865C8;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 5px;
+            
+            &:hover {
+
+               
+                animation: gradient 15s ease infinite;
+                
+            }
+        }
     }
 }
-
-a {
-    color: initial;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.bottomWhite p {
-    font-size: 12px;
-    margin-top: 30px;
-}
-
-.topBlue {
-    width: 100%;
-    background: linear-gradient(270deg, #4865C8 0%, #1D8CCA 100%);
-    text-align: right;
-}
-
-.topBlueTitle {
-    text-align: center;
-    text-transform: uppercase;
-    color: white;
-    font-family: 'Montserrat';
-    font-weight: 900;
-    padding-bottom: 20px;
-    margin-top: -5px;
-}
-
-.labelEmail,
-.labelPassword {
-    display: flex;
-    flex-direction: column;
-}
-
-.bottomWhite {
-    text-align: center;
-    width: 200px;
-    margin: 0 auto;
-}
-
-.bottomWhiteLogo {
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-label {
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-input {
-    width: 100%;
-    margin: 7px auto 0 auto;
-    border: none;
-    background-color: #e9e9e9;
-    height: 27px;
-    border-radius: 5px;
-}
-
-.labelButton {
-    background: linear-gradient(270deg, #4865C8 0%, #1D8CCA 100%);
-    border-radius: 10px;
-    color: #fff;
-    border: 1px solid #4865C8;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-top: 5px;
-    transition: .4s;
-}
-
-.labelButton:hover {
-    background: linear-gradient(270deg, #1D8CCA 0%, #4865C8 100%);
-}
+//ANIMATIONS
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+        background:rotate(190deg);
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+  }

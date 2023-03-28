@@ -20,15 +20,13 @@ function Chat(props) {
   };
 
   return (
-    <div className="chat-container">
-      <div className="messages-container">
       <div class="rectangleChatbot">
-        <div class="topBlue">
-            <button onClick={handleChatClose} class="closeButton"><i class="fa-solid fa-xmark"></i></button>
+        <div class="topBlue">   
             <h1 class="topBlueTitle">ppbot</h1>
+            <button onClick={handleChatClose} class="closeButton"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="bottomWhite">
-            <img src={Logo} alt="logo sneak me" class="bottomWhiteLogo"/>
+        <div class="loginView">
+            <img src={Logo} alt="logo sneak me" class="Logo"/>
             <label for="email" class="labelEmail">Adresse mail
                 <input type="email" id="email" required></input>
             </label>
@@ -37,12 +35,10 @@ function Chat(props) {
             </label>
             <button type="submit" class="labelButton">Se connecter</button>
             <p>Pas encore de compte ?
-                <a href="">Inscrivez-vous</a>
+                <div className={"link"}>Inscrivez-vous</div>
             </p>
         </div>
       </div>
-      </div>
-    </div>
   );
 }
 
