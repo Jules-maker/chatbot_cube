@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../../src/App.scss'
+import '../App.scss'
 import Logo from '../img/logoSneakMe.png'
-function Chat(props) {
+function Connexion(props) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
@@ -18,7 +18,7 @@ function Chat(props) {
   const handleChatClose = () => {
     props.onClose();
   };
-
+console.log(props)
   return (
       <div class="rectangleChatbot">
         <div class="topBlue">   
@@ -33,7 +33,7 @@ function Chat(props) {
             <label for="password" class="labelPassword">Mot de passe
                 <input type="password" id="password" required></input>
             </label>
-            <button type="submit" class="labelButton">Se connecter</button>
+            <button type="submit" class="labelButton" onClick={() => props.handleClick("discussion")}>Se connecter</button>
             <p>Pas encore de compte ?
                 <div className={"link"}>Inscrivez-vous</div>
             </p>
@@ -42,5 +42,5 @@ function Chat(props) {
   );
 }
 
-export default Chat;
+export default Connexion;
 
