@@ -35,7 +35,7 @@ console.log(props)
             </label>
             <button type="submit" class="labelButton" onClick={() => props.handleClick("discussion")}>Se connecter</button>
             <p>Pas encore de compte ?
-                <div className={"link"}>Inscrivez-vous</div>
+                <div className={"link"} onClick={() => props.handleClick("inscription")}>Inscrivez-vous</div>
             </p>
         </div>
       </div>
