@@ -28,10 +28,10 @@ console.log(props)
         <div class="loginView">
             <img src={Logo} alt="logo sneak me" class="Logo"/>
             <label for="email" class="labelEmail">Adresse mail
-                <input type="email" id="email" required></input>
+                <input type="email" id="email" className='connexion' required></input>
             </label>
             <label for="password" class="labelPassword">Mot de passe
-                <input type="password" id="password" required></input>
+                <input type="password" id="password" className='connexion' required></input>
             </label>
             <button type="submit" class="labelButton" onClick={() => props.handleClick("discussion")}>Se connecter</button>
             <p>Pas encore de compte ?
@@ -43,4 +43,3 @@ console.log(props)
 }
 
 export default Connexion;
-

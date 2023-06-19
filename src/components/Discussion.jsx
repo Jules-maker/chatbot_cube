@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../App.scss'
 import Logo from '../img/logoSneakMe.png'
+import botPic from '../img/botPic.png'
 
 
 function Discussion(props) {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
+    const [content, setContent] = useState('')
+    const messagesEndRef = useRef(null);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch('/chatbot', {
+        e.preventDefault(); // (pour éviter de recharger la page)
+    
+        const userMessage = { text: inputValue, sender: 'user' };
+        setMessages(prevMessages => [...prevMessages, userMessage]);
+    
+        const response = await fetch('http://localhost:8000/api/messages', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ message: inputValue })
         });
+    
         const data = await response.json();
-        const newMessage = { text: data.message, sender: 'bot' };
-        setMessages([...messages, newMessage]);
+        const botMessage = { text: data, sender: 'bot' };
+        setMessages(prevMessages => [...prevMessages, botMessage]);
+    
         setInputValue('');
     };
+    
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
@@ -29,7 +38,17 @@ function Discussion(props) {
     const handleChatClose = () => {
         props.onClose();
     };
-
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          // Call the handleSubmit function if Enter key is pressed without Shift key
+          setContent(e.target.value)
+          handleSubmit(e)
+        }
+      }
+    useEffect(() => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+    
 
 
 
@@ -42,19 +61,22 @@ function Discussion(props) {
                 <button onClick={handleChatClose} class="closeButton"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="bottomWhite">
-
-                <div className="chatbot">
-                    <div className="chatMessages">
-                        {messages.map((message, index) => (
-                            <div key={index} className={`message ${message.sender}`}>
-                                {message.text}
-                            </div>
-                        ))}
+                <div className="containerBottomWhite">
+                <div className="containerMessages">
+                    {messages.map((message, index) => (
+                        <div key={index} className={`message ${message.sender === 'user' ? 'userMessage' : 'botMessage'}`}>
+                            {message.sender === 'bot' && <img src={botPic} alt="Bot Avatar" />}
+                            {message.text}
+                        </div>
+                    ))}
+                      <div ref={messagesEndRef}></div>
+                </div>
+                    <div className='containerSendMessage'>
+                            <form onSubmit={handleSubmit} className="buttonsSendMessage">
+                                <textarea type="text" value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Entrez votre message" className='fieldWriteMessage'/>
+                                <button type="submit" className='buttonSend'>Envoyer</button>
+                            </form>
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" value={inputValue} onChange={handleChange} placeholder="Entrez votre message" />
-                        <button type="submit">Envoyer</button>
-                    </form>
                 </div>
             </div>
         </div>
