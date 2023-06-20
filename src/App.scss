@@ -104,7 +104,6 @@ $closeBtn: #ffff;
         
         label {
             font-weight: $labelFontWeight;
-            margin-bottom: 1.3rem;
         }
         input.connexion {
             width: 100%;
@@ -114,6 +113,10 @@ $closeBtn: #ffff;
             height: 27px;
             border-radius: 5px;
             box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.428);
+        }
+        .labelEmail,
+        .labelPassword{
+            margin: 15px 0;
         }
         .labelButton {
             background: linear-gradient(90deg, #1D8CCA 0%, #4865C8 11%,darken(#4865C8,10%) 20%,lighten(#1D8CCA,0%) 50%,darken(#4865C8,10%) 80%,#4865C8 100%);
@@ -220,6 +223,7 @@ $closeBtn: #ffff;
             width: 100%;
             height: 24rem;
             overflow-y: auto;
+            overflow-x: hidden;
             img {
                 width: 35px;
                 margin-right: 10px;

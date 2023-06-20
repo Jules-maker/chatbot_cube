@@ -14,7 +14,7 @@ function Connexion(props) {
     setMessages([...messages, inputValue]);
     setInputValue('');
   };
-
+  
   const handleChatClose = () => {
     props.onClose();
   };
